@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
+import { Montserrat, Oxanium } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/components/header";
 import ThemeProvider from "@/app/components/themeProvider";
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+});
+
+const oxanium = Oxanium({
+  variable: "--font-oxanium",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#000000" /> */}
       </head>
-      <body>
+      <body className={`${montserrat.variable} ${oxanium.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           {children}
