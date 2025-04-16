@@ -8,7 +8,7 @@ export default async function ModuleList() {
     return (
         <div className="">
             <main className="">
-                <h1>Module List</h1>
+                <h1 className="text-primary text-2xl font-serif">Module List</h1>
                 <ul>
                     {courseModules.map((module: { moduleId: number, title: string }) => (
                         <li key={module.moduleId}>

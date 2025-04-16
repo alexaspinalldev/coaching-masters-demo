@@ -34,7 +34,7 @@ export default function ModuleView({ moduleId }: { moduleId: number }) {
 
     return (
         <div>
-            <h1>{module!.title}</h1>
+            <h1 className="text-primary text-2xl font-serif font-bold">{module!.title}</h1>
             <div className="flex justify-center p-4">
                 {
                     selectedLesson?.videoSrc && (
