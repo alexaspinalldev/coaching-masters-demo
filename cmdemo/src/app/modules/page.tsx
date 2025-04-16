@@ -1,12 +1,21 @@
+import mockData from "@/app/data/mockData.json";
+
 export default async function ModuleList() {
 
-    const courseModules = await fetch("../../data/courseModules.json")
+    const courseModules = mockData;
+    // TODO: Fetch the data from the server using react-query
 
     return (
         <div className="">
             <main className="">
                 <h1>Module List</h1>
-                {/* // TODO: map over the modules here and use the index as the key and moduleId */}
+                <ul>
+                    {courseModules.map((module: { moduleId: number, title: string }) => (
+                        <li key={module.moduleId}>
+                            <a href={`/modules/${module.moduleId}`}>{module.title}</a>
+                        </li>
+                    ))}
+                </ul>
             </main>
         </div >
     );
