@@ -2,7 +2,9 @@
 
 @font-face {
   font-family: QuanticoBold;
+  font-weight: 700;
   src: url(/fonts/Quantico/Quantico-Bold.ttf) format("truetype");
+  font-display: swap;
 }
 
 :root {
