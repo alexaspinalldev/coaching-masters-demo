@@ -1,0 +1,74 @@
+[
+    {
+        "moduleId": 1,
+        "title": "Module 1: Coach Identity",
+        "lessons": [
+            {
+                "lessonId": 1.1,
+                "title": "Understanding Your 'Why'",
+                "desc": "Explore the core motivations behind your desire to coach and how they shape your approach.",
+                "videoSrc": "https://www.youtube.com/watch?v=placeholder1"
+            },
+            {
+                "lessonId": 1.2,
+                "title": "Defining Your Coaching Values",
+                "desc": "Learn how to identify the values that will guide your coaching practice and decisions.",
+                "videoSrc": "https://www.youtube.com/watch?v=placeholder2"
+            },
+            {
+                "lessonId": 1.3,
+                "title": "Creating Your Coaching Persona",
+                "desc": "Build a personal coaching identity that aligns with your strengths and authentic self.",
+                "videoSrc": "https://www.youtube.com/watch?v=placeholder3"
+            }
+        ]
+    },
+    {
+        "moduleId": 2,
+        "title": "Module 2: Foundations of Communication",
+        "lessons": [
+            {
+                "lessonId": 2.1,
+                "title": "The Power of Active Listening",
+                "desc": "Learn techniques to deeply hear and understand your clients’ words and emotions.",
+                "videoSrc": "https://www.youtube.com/watch?v=placeholder4"
+            },
+            {
+                "lessonId": 2.2,
+                "title": "Asking Powerful Questions",
+                "desc": "Master the art of asking questions that unlock insight, motivation, and growth.",
+                "videoSrc": "https://www.youtube.com/watch?v=placeholder5"
+            },
+            {
+                "lessonId": 2.3,
+                "title": "Building Rapport and Trust",
+                "desc": "Understand how to foster meaningful and safe coaching relationships.",
+                "videoSrc": "https://www.youtube.com/watch?v=placeholder6"
+            }
+        ]
+    },
+    {
+        "moduleId": 3,
+        "title": "Module 3: Goal Setting and Accountability",
+        "lessons": [
+            {
+                "lessonId": 3.1,
+                "title": "Clarifying Client Goals",
+                "desc": "Help clients identify goals that are clear, aligned, and meaningful.",
+                "videoSrc": "https://www.youtube.com/watch?v=placeholder7"
+            },
+            {
+                "lessonId": 3.2,
+                "title": "Creating Actionable Plans",
+                "desc": "Break down long-term goals into achievable steps with built-in motivation.",
+                "videoSrc": "https://www.youtube.com/watch?v=placeholder8"
+            },
+            {
+                "lessonId": 3.3,
+                "title": "Accountability Without Pressure",
+                "desc": "Learn how to hold clients accountable in a supportive and empowering way.",
+                "videoSrc": "https://www.youtube.com/watch?v=placeholder9"
+            }
+        ]
+    }
+]
