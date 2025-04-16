@@ -1,22 +1,13 @@
-import mockData from "@/app/data/mockData.json";
-const courseModules = mockData;
+import ModuleView from "@/app/components/moduleView";
 
-export default async function Module({ params }: Readonly<{ params: Promise<{ moduleId: string }> }>) {
+export default async function Module({ params }: Readonly<{ params: Promise<{ moduleId: number }> }>) {
   const { moduleId } = await params;
-  const module = courseModules.find((module: { moduleId: number }) => module.moduleId === Number(moduleId));
+
   return (
     <div>
       <main>
-
-        <h1>{module?.title}</h1>
-        <ol>
-          {module?.lessons.map((lesson: { lessonId: number, title: string }) => (
-            <li key={lesson.lessonId}>
-              <div>{lesson.title}</div>
-              <input type="checkbox" />
-            </li>
-          ))}
-        </ol>
+        <a href="/modules">Back to module list</a>
+        <ModuleView moduleId={moduleId} />
       </main>
     </div >
   );
