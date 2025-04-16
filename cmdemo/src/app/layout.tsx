@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/app/components/header";
+import ThemeProvider from "@/app/components/themeProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -8,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="en">
-      <head>
+    <html lang="en" suppressHydrationWarning>
+      <head >
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -17,10 +19,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <meta name="theme-color" content="#000000" /> */}
       </head>
       <body>
-        {children}
-        <footer>
-        </footer>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          {children}
+          <footer>
+          </footer>
+        </ThemeProvider>
       </body>
-    </html>
+    </html >
   );
 }
