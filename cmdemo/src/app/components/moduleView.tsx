@@ -35,11 +35,12 @@ export default function ModuleView({ moduleId }: { moduleId: number }) {
     return (
         <div>
             <h1>{module!.title}</h1>
-            {
-                selectedLesson?.videoSrc && (
-                    <iframe className="w-full" src={embedUrl} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                )
-            }
+            <div className="flex justify-center p-4">
+                {
+                    selectedLesson?.videoSrc && (
+                        <iframe className="w-full max-w-[1000px] aspect-16/9" src={embedUrl} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                    )
+                }</div>
             <ol>
                 {
                     module?.lessons.map((lesson) => (
