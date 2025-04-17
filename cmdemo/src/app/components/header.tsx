@@ -26,11 +26,11 @@ export default function Header() {
             </Link>
             <NavigationMenuList>
                 <div className="hidden md:flex md:items-center md:gap-6">
-                    <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
+                    <Link href="/" className="text-base font-medium transition-colors hover:text-primary">
                         Home
                     </Link>
                     <DropdownMenu>
-                        <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary">
+                        <DropdownMenuTrigger className="flex items-center gap-1 text-base font-medium transition-colors hover:text-primary">
                             Your modules <ChevronDown className="h-4 w-4" />
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="center">
