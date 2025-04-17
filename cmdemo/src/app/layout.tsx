@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/app/components/header";
 import ThemeProvider from "@/app/context/themeProvider";
 import { ModuleProvider } from '@/app/context/modulesContext';
+import Footer from "@/app/components/footer";
 
 // Fetch the modules on the server side to pass them to the context
 import { getModules } from "@/app/api/db/route";
@@ -38,14 +39,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="manifest" href="/assets/favicons/site.webmanifest" />
       </head>
 
-      <body className={`${montserrat.variable} ${oxanium.variable} antialiased`}>
+      <body className={`${montserrat.variable} ${oxanium.variable} antialiased flex flex-col min-h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ModuleProvider modules={modules || []}>
             <Header />
             {children}
           </ModuleProvider>
-          <footer>
-          </footer>
+          <Footer />
         </ThemeProvider>
       </body>
     </html >
