@@ -1,32 +1,18 @@
 "use client";
 
-import mockData from "@/app/data/mockData.json";
 import React, { useState } from "react";
+import { Checkbox } from "@/app/components/ui/checkbox";
+import { Lesson, Module } from "@/app/api/db/route"; // Import types
+import { useModules } from "@/app/context/modulesContext"; // Import the context
 
-interface Lesson {
-    lessonId: number;
-    title: string;
-    videoSrc: string;
-}
-interface Module {
-    moduleId: number;
-    title: string;
-    lessons: Lesson[];
-}
-// We'll infer these from supabase schema later
+export default function ModuleView({ moduleId, lessons }: { moduleId: number, lessons: Lesson[] }) {
+    const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(lessons[0] || null);
 
-const courseModules: Module[] = mockData;
-
-export default function ModuleView({ moduleId }: { moduleId: number }) {
-
-    const module = courseModules.find(
-        (module) => module.moduleId === Number(moduleId)
-    );
-
-    const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(module?.lessons[0] || null);
+    const { modules } = useModules();
+    const module = modules?.find((module: Module) => module.id === Number(moduleId));
 
     // Sanitise the youtube URL to allow the use of normal browser URL in the database
-    let videoId = selectedLesson?.videoSrc.split("v=")[1];
+    let videoId = selectedLesson?.videoSrc?.split("v=")[1];
     if (videoId?.includes("&")) {
         videoId = videoId.split("&")[0];
     }
@@ -34,7 +20,7 @@ export default function ModuleView({ moduleId }: { moduleId: number }) {
 
     return (
         <div>
-            <h1 className="text-primary text-2xl font-serif font-bold">{module!.title}</h1>
+            <h1 className="text-primary text-2xl font-serif font-bold">{module?.title}</h1>
             <div className="flex justify-center p-4">
                 {
                     selectedLesson?.videoSrc && (
@@ -43,10 +29,12 @@ export default function ModuleView({ moduleId }: { moduleId: number }) {
                 }</div>
             <ol>
                 {
-                    module?.lessons.map((lesson) => (
-                        <li key={lesson.lessonId} onClick={() => setSelectedLesson(lesson)} >
+                    lessons.map((lesson) => (
+                        <li key={lesson.id} onClick={() => setSelectedLesson(lesson)} >
                             <div>{lesson.title} </div>
-                            < input type="checkbox" />
+                            <Checkbox
+                                checked={selectedLesson?.viewed === true}
+                                onCheckedChange={() => setSelectedLesson(lesson)} />
                         </li>
                     ))}
             </ol>

@@ -6,8 +6,8 @@ import ThemeProvider from "@/app/context/themeProvider";
 import { ModuleProvider } from '@/app/context/modulesContext';
 
 // Fetch the modules on the server side to pass them to the context
-import { GET } from "@/app/api/db/route";
-const modules = await GET();
+import { getModules } from "@/app/api/db/route";
+const modules = await getModules();
 
 export const metadata: Metadata = {
   title: "Create Next App",

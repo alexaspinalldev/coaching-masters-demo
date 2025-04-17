@@ -3,11 +3,7 @@
 import { createContext, useContext } from "react";
 
 // Define the type for a module
-type Module = {
-    id: number;
-    title: string | null;
-    description: string | null;
-};
+import { Module } from "@/app/api/db/route";
 
 type ModuleContextType = {
     modules: Module[] | undefined;
