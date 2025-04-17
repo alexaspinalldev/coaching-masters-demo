@@ -16,7 +16,7 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/app/components/ui/dropdown-menu"
 
 
-export default function Header(props: { modules: string[] }) {
+export default function Header(props: { modules: { id: number; title: string | null; description: string | null; }[] | undefined }) {
     const { modules } = props
     return (
         <NavigationMenu className="flex items-center justify-between w-full md:py-2 px-4">
@@ -34,11 +34,11 @@ export default function Header(props: { modules: string[] }) {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="center">
                             <ul>
-                                {/* {modules.map((module) => (
-                                    <DropdownMenuItem key={module.name} asChild>
-                                        <Link href={module.href}>{module.name}</Link>
+                                {modules?.map((module) => (
+                                    <DropdownMenuItem key={module.title} asChild>
+                                        <Link href={`${module.id}`}>{module.title}</Link>
                                     </DropdownMenuItem>
-                                ))} */}
+                                ))}
                                 <DropdownMenuItem asChild>
                                     <Link href="/modules">See all</Link>
                                 </DropdownMenuItem>
