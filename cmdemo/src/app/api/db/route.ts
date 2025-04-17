@@ -1,4 +1,3 @@
-import { NextResponse } from 'next/server';
 import { eq } from 'drizzle-orm';
 import { db } from '@/db/index';
 import { modules, lessons } from '@/db/schema/schema'; // Import the modules table schema

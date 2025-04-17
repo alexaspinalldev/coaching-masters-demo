@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { Montserrat, Oxanium } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/components/header";
-import ThemeProvider from "@/app/components/themeProvider";
+import ThemeProvider from "@/app/context/themeProvider";
+import { ModuleProvider } from '@/app/context/modulesContext';
 
+// Fetch the modules on the server side to pass them to the context
 import { GET } from "@/app/api/db/route";
 const modules = await GET();
-
-// Need to type the response using schema
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,8 +25,6 @@ const oxanium = Oxanium({
   subsets: ["latin"],
 });
 
-
-
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -37,10 +35,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#000000" /> */}
       </head>
+
       <body className={`${montserrat.variable} ${oxanium.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Header modules={modules} />
-          {children}
+          <ModuleProvider modules={modules || []}>
+            <Header />
+            {children}
+          </ModuleProvider>
           <footer>
           </footer>
         </ThemeProvider>

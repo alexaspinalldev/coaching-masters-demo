@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import Image from "next/image";
 import { cn } from "@/lib/utils"
+import { useModules } from "@/app/context/modulesContext"
 
 
 import { ChevronDown } from "lucide-react"
@@ -16,8 +17,8 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/app/components/ui/dropdown-menu"
 
 
-export default function Header(props: { modules: { id: number; title: string | null; description: string | null; }[] | undefined }) {
-    const { modules } = props
+export default function Header() {
+    const { modules } = useModules();
     return (
         <NavigationMenu className="flex items-center justify-between w-full md:py-2 px-4">
             <Link href="/" className="flex items-center">
@@ -36,7 +37,7 @@ export default function Header(props: { modules: { id: number; title: string | n
                             <ul>
                                 {modules?.map((module) => (
                                     <DropdownMenuItem key={module.title} asChild>
-                                        <Link href={`${module.id}`}>{module.title}</Link>
+                                        <Link href={`/modules/${module.id}`}>{module.title}</Link>
                                     </DropdownMenuItem>
                                 ))}
                                 <DropdownMenuItem asChild>

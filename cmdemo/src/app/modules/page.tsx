@@ -1,22 +1,23 @@
-import mockData from "@/app/data/mockData.json";
+"use client";
 
+import React from 'react';
+import { useModules } from "@/app/context/modulesContext";
+import Link from "next/link";
 export default async function ModuleList() {
 
-    const courseModules = mockData;
-    // TODO: Fetch the data from the server using react-query
+    const { modules } = useModules();
 
     return (
-        <div className="">
-            <main className="">
-                <h1 className="text-primary text-2xl font-serif font-bold">Module List</h1>
-                <ul>
-                    {courseModules.map((module: { moduleId: number, title: string }) => (
-                        <li key={module.moduleId}>
-                            <a href={`/modules/${module.moduleId}`}>{module.title}</a>
-                        </li>
-                    ))}
-                </ul>
-            </main>
-        </div >
+        <main className="">
+            <h1 className="text-primary text-2xl font-serif font-bold">Module List</h1>
+            <ul>
+                {modules?.map((module) => (
+                    <li key={module.id}>
+                        <Link href={`/modules/${module.id}`}>{module.title}</Link>
+                        <p>{module.description}</p>
+                    </li>
+                ))}
+            </ul>
+        </main>
     );
 }
