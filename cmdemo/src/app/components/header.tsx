@@ -1,43 +1,79 @@
+"use client"
+
+import * as React from "react"
+import Link from "next/link"
 import Image from "next/image";
-import Link from "next/link";
+import { cn } from "@/lib/utils"
+
+
+import { ChevronDown } from "lucide-react"
+import { ThemeToggle } from "@/app/components/ui/themeToggle"
 import {
     NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
-} from "@/app/components/ui/navigationMenu"
-import { ThemeToggle } from "@/app/components/ui/themeToggle";
+} from "@/app/components/ui/navigation-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/app/components/ui/dropdown-menu"
 
-export default function Header() {
+
+export default function Header(props: { modules: string[] }) {
+    const { modules } = props
     return (
-        <div className="w-full flex shadow-sm sticky top-0 z-50">
-            <NavigationMenu className="flex items-center justify-between w-inherit md:py-2 px-4">
-                <Link href="/" className="flex items-center">
-                    <Image src={"/assets/images/TCM-logo.webp"} alt="Logo" width={100} height={100} className="logo" />
-                </Link>
-                {/* // TODO: This looks pretty rough, need to refer to docs usage */}
-                <NavigationMenuList>
-                    <NavigationMenuItem >
-                        <NavigationMenuLink href="/" >
-                            Home
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuTrigger>Modules</NavigationMenuTrigger>
-                        <NavigationMenuContent className="w-full">
-                            Your modules:
-                            {/* // TODO: Map modules here */}
-                            <NavigationMenuLink>Link</NavigationMenuLink>
-                            <NavigationMenuLink>Link</NavigationMenuLink>
-                            <NavigationMenuLink>Link</NavigationMenuLink>
-                        </NavigationMenuContent>
-                    </NavigationMenuItem>
-                </NavigationMenuList>
-                <ThemeToggle />
-            </NavigationMenu>
-        </div>
-
-    );
+        <NavigationMenu className="flex items-center justify-between w-full md:py-2 px-4">
+            <Link href="/" className="flex items-center">
+                <Image src={"/assets/images/TCM-logo.webp"} alt="Logo" width={100} height={75} className="logo" />
+            </Link>
+            <NavigationMenuList>
+                <div className="hidden md:flex md:items-center md:gap-6">
+                    <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
+                        Home
+                    </Link>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary">
+                            Your modules <ChevronDown className="h-4 w-4" />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="center">
+                            <ul>
+                                {/* {modules.map((module) => (
+                                    <DropdownMenuItem key={module.name} asChild>
+                                        <Link href={module.href}>{module.name}</Link>
+                                    </DropdownMenuItem>
+                                ))} */}
+                                <DropdownMenuItem asChild>
+                                    <Link href="/modules">See all</Link>
+                                </DropdownMenuItem>
+                            </ul>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
+            </NavigationMenuList>
+            <ThemeToggle />
+        </NavigationMenu>
+    )
 }
+
+const ListItem = React.forwardRef<
+    React.ComponentRef<"a">,
+    React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+    return (
+        <li>
+            <NavigationMenuLink asChild className="rounded-lg">
+                <a
+                    ref={ref}
+                    className={cn(
+                        "block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        className
+                    )}
+                    {...props}
+                >
+                    <div className="text-sm font-medium leading-none">{title}</div>
+                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        {children}
+                    </p>
+                </a>
+            </NavigationMenuLink>
+        </li>
+    )
+})
+ListItem.displayName = "ListItem"
