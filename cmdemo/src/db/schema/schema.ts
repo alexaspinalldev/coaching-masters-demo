@@ -6,17 +6,17 @@ export const modules = pgTable('modules', {
     id: serial('id').primaryKey(),
     title: text('title'),
     description: text('description'),
-});
+}).enableRLS();
 
 export const lessons = pgTable('lessons', {
     id: serial('id').primaryKey(),
     title: text('title'),
     description: text('description'),
-    moduleId: serial('module_id').references(() => modules.id),
+    moduleId: serial('moduleId').references(() => modules.id),
     transcript: text('transcript'),
-    videoSrc: text('video_src'),
+    videoSrc: text('videoSrc'),
     viewed: boolean('viewed').default(false)
-});
+}).enableRLS();
 
 export const modulesRelations = relations(modules, ({ many }) => ({
     lessons: many(lessons),
