@@ -3,7 +3,7 @@
 import React from 'react';
 import { useModules } from "@/app/context/modulesContext";
 import Link from "next/link";
-export default async function ModuleList() {
+export default function ModuleList() {
 
     const { modules } = useModules();
 
