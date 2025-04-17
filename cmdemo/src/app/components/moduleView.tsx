@@ -2,6 +2,17 @@
 
 import React, { useState } from "react";
 import { Checkbox } from "@/app/components/ui/checkbox";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/app/components/ui/tabs"
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/app/components/ui/table"
+
 import { Lesson, Module } from "@/app/api/db/route"; // Import types
 import { useModules } from "@/app/context/modulesContext"; // Import the context
 
@@ -49,32 +60,52 @@ export default function ModuleView({ moduleId, lessons }: { moduleId: number, le
     const embedUrl = `https://www.youtube.com/embed/${videoId}`
 
     return (
-        <div>
-            <h1 className="text-primary text-2xl font-serif font-bold">{module?.title}</h1>
-            <div className="flex justify-center p-4">
+        <div className="w-full h-full pt-2 md:pt-4 p-4 items-center">
+            <h1 className="text-primary text-2xl md:text-4xl font-serif font-bold mb-3 md:mb-5">{module?.title}</h1>
+            <div className="flex justify-center mb-5">
                 {
                     selectedLesson?.videoSrc && (
                         <iframe className="w-full max-w-[1000px] aspect-16/9" src={embedUrl} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                     )
                 }</div>
-            <ol>
-                {
-                    lessons.map((lesson) => (
-                        // Tabs
-                        // Table
-                        <li key={lesson.id}>
-                            <div onClick={() => setSelectedLesson(lesson)}>{lesson.title}</div>
-                            <Checkbox
-                                {...lesson.viewed ? { checked: true } : null}
-                                onCheckedChange={(checked) => {
-                                    if (checked === true) {
-                                        handleCheckboxChange(lesson.id);
-                                    }
-                                }}
-                            />
-                        </li>
-                    ))}
-            </ol>
+            <div className="flex justify-center">
+                <Tabs defaultValue="lessonList" className="w-full md:w-4/5 lg:w-4/5">
+                    <TabsList className="flex justify-evenly w-full mb-3">
+                        <TabsTrigger value="lessonList">Lessons in this module</TabsTrigger>
+                        <TabsTrigger value="transcript">Video transcript</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="lessonList">
+                        {/* Need to revisit why this label wouldn't line up properly when inside the table */}
+                        <div className="w-full flex justify-end">
+                            <div className="text-sm text-foreground">Mark as watched</div>
+                        </div>
+                        <Table className="w-full">
+                            {/* <TableHeader className="w-full flex justify-end">
+                                <TableHead className="w-fit h-auto">Mark as watched</TableHead>
+                            </TableHeader> */}
+                            <TableBody>
+                                {
+                                    lessons.map((lesson) => (
+                                        <TableRow key={lesson.id}>
+                                            <TableCell className="text-lg sm:text-xl cursor-pointer" onClick={() => setSelectedLesson(lesson)}>{lesson.title}</TableCell>
+                                            <TableCell><Checkbox
+                                                {...lesson.viewed ? { checked: true } : null}
+                                                onCheckedChange={(checked) => {
+                                                    if (checked === true) {
+                                                        handleCheckboxChange(lesson.id);
+                                                    }
+                                                }}
+                                            /></TableCell>
+                                        </TableRow>
+                                    ))}
+
+                            </TableBody>
+                        </Table>
+                    </TabsContent>
+                    <TabsContent className="p-2 md:px-5 lg:px-8" value="transcript">{selectedLesson?.transcript}</TabsContent>
+                </Tabs>
+            </div>
+
         </div>
     );
 }
