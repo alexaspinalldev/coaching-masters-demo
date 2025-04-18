@@ -28,23 +28,21 @@ export default function ModuleList() {
             <h1 className="text-primary font-serif text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-3 md:mb-5">
                 Your enrolled modules
             </h1>
-            <ul>
-                <motion.ul
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="show"
-                >
-                    {modules?.map((module) => (
-                        <motion.li key={module.id} variants={itemVariants}>
-                            <ModuleCard
-                                title={module.title}
-                                description={module.description}
-                                href={`/modules/${module.id}`}
-                            />
-                        </motion.li>
-                    ))}
-                </motion.ul>
-            </ul>
+            <motion.ul
+                variants={containerVariants}
+                initial="hidden"
+                animate="show"
+            >
+                {modules?.map((module) => (
+                    <motion.li key={module.id} variants={itemVariants}>
+                        <ModuleCard
+                            title={module.title}
+                            description={module.description}
+                            href={`/modules/${module.id}`}
+                        />
+                    </motion.li>
+                ))}
+            </motion.ul>
         </div>
 
     );
