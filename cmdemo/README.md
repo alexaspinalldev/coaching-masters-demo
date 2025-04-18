@@ -42,7 +42,7 @@ The Coaching Masters is a dynamic portal for users to view and consume a library
 
 The lessons consist of videos, and the user also view the transcript of the selected video. When the user has completed a lesson, they can mark it "viewed", which updates the database. Upon returning to that module, any previously viewed videos will be already marked.
 
-The site boasts a simple light/dark mode, which should default to the user's preferred mode.
+The site boasts a simple light/dark mode, which should default to the user's preferred mode. It is responsive across a range of screen widths and passes all accessibility tests in Lighthouse testing.
 
 ## Notes
 Some time was lost trying to modify the ShadCN/UI library components, particularly the navbar. In the end for the more complex items I elected to try using v0 to generate a few basic blocks for me to style, and was pleasantly surprised with the results.
