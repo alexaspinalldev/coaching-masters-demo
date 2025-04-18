@@ -7,9 +7,6 @@ import { Button } from "@/app/components/ui/button"
 
 export function ThemeToggle() {
     const { theme, setTheme } = useTheme()
-
-    // Readme: solved a problem with useEffect and hydration errors causing layout shift
-
     const toggleTheme = () => {
         setTheme(theme === "dark" ? "light" : "dark")
     }

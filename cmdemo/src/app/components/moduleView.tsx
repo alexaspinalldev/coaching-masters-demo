@@ -75,7 +75,7 @@ export default function ModuleView({ moduleId, lessons }: { moduleId: number, le
                         <TabsTrigger value="transcript">Video transcript</TabsTrigger>
                     </TabsList>
                     <TabsContent value="lessonList">
-                        {/* Need to revisit why this label wouldn't line up properly when inside the table */}
+                        {/* // TODO: revisit why this label refused to line up properly when inside the table element */}
                         <div className="w-full flex justify-end">
                             <div className="text-sm text-foreground">Mark as watched</div>
                         </div>

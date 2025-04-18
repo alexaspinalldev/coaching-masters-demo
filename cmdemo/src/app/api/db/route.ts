@@ -42,5 +42,3 @@ export async function getLessonsByModuleId(moduleId: number): Promise<Lesson[]> 
         return [];
     }
 }
-
-// Post function for lessons viewed
