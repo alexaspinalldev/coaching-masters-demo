@@ -15,9 +15,8 @@ export default function AnimationPresenceWrapper({ children }: Readonly<{ childr
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: .4, ease: 'easeInOut' }}
-
             >
-                {children}
+                <main>{children}</main>
             </motion.main>
         </AnimatePresence>
     );
