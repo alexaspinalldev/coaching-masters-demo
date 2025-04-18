@@ -65,7 +65,7 @@ export default function ModuleView({ moduleId, lessons }: { moduleId: number, le
             <div className="flex justify-center mb-5">
                 {
                     selectedLesson?.videoSrc && (
-                        <iframe className="w-full max-w-[1000px] aspect-16/9" src={embedUrl} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                        <iframe title={selectedLesson.title ? selectedLesson.title : "Lesson video"} className="w-full max-w-[1000px] aspect-16/9" src={embedUrl} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                     )
                 }</div>
             <div className="flex justify-center">
@@ -88,7 +88,7 @@ export default function ModuleView({ moduleId, lessons }: { moduleId: number, le
                                     lessons.map((lesson) => (
                                         <TableRow key={lesson.id}>
                                             <TableCell className="text-lg sm:text-xl cursor-pointer" onClick={() => setSelectedLesson(lesson)}>{lesson.title}</TableCell>
-                                            <TableCell><Checkbox
+                                            <TableCell><Checkbox aria-label="lesson viewed"
                                                 {...lesson.viewed ? { checked: true } : null}
                                                 onCheckedChange={(checked) => {
                                                     if (checked === true) {
