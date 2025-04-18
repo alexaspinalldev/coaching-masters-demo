@@ -1,7 +1,8 @@
 # The Coaching Masters Learning Portal
 
-<img height="400" alt="TCMiphoneScreenshot" src="https://github.com/user-attachments/assets/5ceda0ae-39fb-4368-a6e4-d3f6b7970899" />
-<img height="400" alt="Screenshot 2025-04-18 at 11 18 28" src="https://github.com/user-attachments/assets/9033618f-de4b-4b7c-90f6-3278ae13bdd6" />
+<img src="https://github.com/user-attachments/assets/68c05d35-3bdf-4237-af3c-fe98b3577239" alt="TCMiphoneScreenshot" width="20%">
+<img src="https://github.com/user-attachments/assets/d6eeaae7-ef1c-4595-9ce9-eefbf9f39034" alt="TCMipadScreenshot" width="39%">
+<img src="https://github.com/user-attachments/assets/e5977074-8404-440c-8f36-6251bc84e4c8" alt="TCMipadScreenshot2" width="39%">
 
 This project was built as a task for The Coaching Masters.
 
