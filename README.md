@@ -58,8 +58,10 @@ Supabase required some troubleshooting, as the link provided in their dashboard 
 #### No auth
 Currently there is no concept of a specific user, so any real-world implementation would need some form of session ID within the database call to find a specific user's modules.
 
-#### Hydration issue vs rendering issue
+#### ~~Hydration issue vs rendering issue~~
 Where previously I've implemented light/dark mode using a body class, next-themes was new to me. There remains an outstanding hydration issue due to the fact that the theme provider needs to know the client's theme before it can render. This was addressed using a useEffect hook, but this in turn introduced an unsightly layout shift in the header, so I chose to revert it. This would be easily solved in time with a little refactoring, or adding more rigid dimensions to the header content.
+
+Edit: This issue is now resolved by delaying the rendering of the theme-specific ui element, but unconditionally rendering the button around it.
 
 #### No typing from schema
 In my other similar projects I have used Zod to infer types from my database schema but I did not do this here in the interest of time. Instead types are explicitly declared and exported.
