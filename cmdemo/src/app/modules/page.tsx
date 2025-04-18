@@ -24,7 +24,7 @@ export default function ModuleList() {
     };
 
     return (
-        <main className="grow p-6 md:p-10 lg:p-12">
+        <div className="p-6 md:p-10 lg:p-12">
             <h1 className="text-primary font-serif text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-3 md:mb-5">
                 Your enrolled modules
             </h1>
@@ -45,7 +45,7 @@ export default function ModuleList() {
                     ))}
                 </motion.ul>
             </ul>
-        </main>
+        </div>
 
     );
 }

@@ -10,10 +10,8 @@ export default async function Module({ params }: Readonly<{ params: Promise<{ mo
 
   return (
     <div>
-      <main className="grow">
-        <Link className="flex items-center pl-3 text-sm md:text-base hover:text-primary" href="/modules"><ChevronLeft className="size-[16px] md:size-[20px]" />Back to module list</Link>
-        <ModuleView moduleId={moduleId} lessons={lessons} />
-      </main>
+      <Link className="flex items-center pl-3 text-sm md:text-base hover:text-primary" href="/modules"><ChevronLeft className="size-[16px] md:size-[20px]" />Back to module list</Link>
+      <ModuleView moduleId={moduleId} lessons={lessons} />
     </div >
   );
 }
