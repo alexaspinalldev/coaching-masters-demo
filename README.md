@@ -61,13 +61,10 @@ Currently there is no concept of a specific user, so any real-world implementati
 #### ~~Hydration issue vs rendering issue~~
 Where previously I've implemented light/dark mode using a body class, next-themes was new to me. There remains an outstanding hydration issue due to the fact that the theme provider needs to know the client's theme before it can render. This was addressed using a useEffect hook, but this in turn introduced an unsightly layout shift in the header, so I chose to revert it. This would be easily solved in time with a little refactoring, or adding more rigid dimensions to the header content.
 
-Edit: This issue is now resolved by delaying the rendering of the theme-specific ui element, but unconditionally rendering the button around it.
-
-#### No typing from schema
-In my other similar projects I have used Zod to infer types from my database schema but I did not do this here in the interest of time. Instead types are explicitly declared and exported.
+Edit: This issue is now resolved by delaying the rendering of the theme-specific UI element, but unconditionally rendering the button around it.
 
 #### Client and Server separation
-It was a persistent challenge with this project to juggle client components vs server components. Calls made to the databse via Drizzle must be made on server components, which then clashed with the ability to wrap my layout in Framer's \<AnimatePresence />. This is something that could do with more dedicated work to tidy project-wide, I feel.
+It was a persistent challenge with this project to juggle client components vs server components. Calls made to the database via Drizzle must be made on server components, which then clashed with the ability to wrap my layout in Framer's \<AnimatePresence />. This was a valuable lesson in planning component nesting, and when to use imported Server Functions vs Fetching from the client-side to the server.
 
 #### Exit animations
 Related to the above, exit animations on page transition currently do not work due to the way \<AnimatePresence /> must wrap around only client components. Due to the way the wrapper renders, this then broke the flex of the layout, so I am content with having only enter animations for now.
