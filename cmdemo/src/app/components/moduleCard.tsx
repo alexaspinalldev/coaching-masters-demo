@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
 
-interface ClickableCardProps {
+type ClickableCardProps = {
     title: string | null
     description: string | null
     href: string

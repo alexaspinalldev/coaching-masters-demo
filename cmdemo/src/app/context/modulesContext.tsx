@@ -3,8 +3,8 @@
 import { createContext, useContext } from "react";
 
 // Define the type for a module
-import { Module } from "@/app/api/db/route";
-
+import { modules } from '@/db/index';
+type Module = typeof modules.$inferInsert;
 type ModuleContextType = {
     modules: Module[] | undefined;
 };

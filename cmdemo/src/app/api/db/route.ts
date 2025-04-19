@@ -1,22 +1,8 @@
 import { eq } from 'drizzle-orm';
-import { db } from '@/db/index';
-import { modules, lessons } from '@/db/schema/schema'; // Import the modules table schema
+import { db, modules, lessons } from '@/db/index';
 
-export interface Lesson {
-    id: number;
-    title: string | null;
-    videoSrc: string | null;
-    viewed: boolean | null;
-    moduleId: number | null;
-    description: string | null;
-    transcript: string | null;
-}
-
-export interface Module {
-    id: number;
-    title: string | null;
-    description: string | null;
-};
+type Module = typeof modules.$inferInsert;
+type Lesson = typeof lessons.$inferInsert;
 
 // Get function for modules or specific lessons
 export async function getModules(): Promise<Module[]> {

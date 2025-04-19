@@ -13,8 +13,11 @@ import {
     TableRow,
 } from "@/app/components/ui/table"
 
-import { Lesson, Module } from "@/app/api/db/route"; // Import types
+import { modules, lessons } from '@/db/index';
 import { useModules } from "@/app/context/modulesContext"; // Import the context
+
+type Module = typeof modules.$inferInsert;
+type Lesson = typeof lessons.$inferInsert;
 
 export default function ModuleView({ moduleId, lessons }: { moduleId: number, lessons: Lesson[] }) {
 
@@ -92,7 +95,7 @@ export default function ModuleView({ moduleId, lessons }: { moduleId: number, le
                                                 {...lesson.viewed ? { checked: true } : null}
                                                 onCheckedChange={(checked) => {
                                                     if (checked === true) {
-                                                        handleCheckboxChange(lesson.id);
+                                                        handleCheckboxChange(Number(lesson.id));
                                                     }
                                                 }}
                                             /></TableCell>
