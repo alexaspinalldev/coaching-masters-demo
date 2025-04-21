@@ -50,6 +50,8 @@ The site boasts a simple light/dark mode, which should default to the user's pre
 ## Notes
 Some time was lost attempting to modify ShadCN/UI components, particularly the navbar. Eventually, I opted to use v0 to generate a few basic blocks to style by hand, and was pleasantly surprised with the results.
 
+I decided to focus on achieving robust backend functionality over spending too much time on frontend design. From my time as a Business Analyst, I firmly believe design choices and UX should be led by the users and stakeholders primarily.
+
 I initially started the project using dummy data in a JSON file, but in hindsight, this time would have been better spent setting up the database from the start, as it wasn’t a drop-in substitute.
 
 Supabase required some troubleshooting, as the link provided in their dashboard didn’t work (see: https://github.com/supabase/supabase/issues/21690). In order to push new migrations, I had to use the "Supavisor" proxy port, as per: https://github.com/drizzle-team/drizzle-orm/issues/2590.
